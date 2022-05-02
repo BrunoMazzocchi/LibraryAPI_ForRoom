@@ -13,28 +13,30 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> getAll(){
+    public List<Book> getAll() {
         return bookRepository.getAll();
     }
 
-    public Optional<Book> getBook(int bookId){
+    public Optional<Book> getBook(int bookId) {
         return bookRepository.getBook(bookId);
     }
 
-    public Book save(Book book){
+    public Book save(Book book) {
         return bookRepository.save(book);
     }
 
-    public boolean delete(int bookId){
+    public boolean delete(int bookId) {
         return getBook(bookId).map(book -> {
             bookRepository.delete(bookId);
             return true;
         }).orElse(false);
-        }
-    public Optional<List<Book>> findBookByAuthorName(String name){
-        return bookRepository.findBookByAuthorName(name);
     }
-    public Optional<List<Book>> findBookByAuthorSurname(String surname){
-        return bookRepository.findBookByAuthorSurname(surname);
+
+    public Optional<List<Book>> findByAuthorOrSurname(String author, String surname) {
+        return bookRepository.findByAuthorOrSurname(author, surname);
+    }
+
+    public Optional<List<Book>> findByNameContaining(String name) {
+        return bookRepository.findByNameContaining(name);
     }
 }

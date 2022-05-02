@@ -18,7 +18,7 @@ public class BookController {
 
     @GetMapping("/all")
     @ApiOperation("Gets all books")
-    public ResponseEntity<List<Book>> getAll(){
+    public ResponseEntity<List<Book>> getAll() {
         return new ResponseEntity<>(bookService.getAll(), HttpStatus.OK);
     }
 
@@ -29,20 +29,33 @@ public class BookController {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Not found")
     })
-    public ResponseEntity<Book>getBook(@ApiParam(value = "Book's ID", required = true, example = "1")@PathVariable("id") int bookId){
+    public ResponseEntity<Book> getBook(@ApiParam(value = "Book's ID", required = true, example = "1") @PathVariable("id") int bookId) {
         return bookService.getBook(bookId)
                 .map(book -> new ResponseEntity<>(book, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @ApiOperation("Search a book with the author's name or surname (not working right now)")
-    @GetMapping("/author/{nameOrSurname}")
+    @ApiOperation("Search a specific list of books or book with a name/or part of it")
+    @GetMapping("/name/{bookName}")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Not found")
     })
-    public  ResponseEntity<List<Book>> findBookByAuthorNameOrSurname(@ApiParam(value = "Author's name/surname (String)", required = true, example = "1")@PathVariable String nameOrSurname){
-        return bookService.findBookByAuthorName(nameOrSurname).map(
+    public ResponseEntity<List<Book>> findByNameContaining(@ApiParam(value = "Book's name", required = true, example = "The Legend Of Zelda") @PathVariable("bookName") String bookName) {
+        return bookService.findByNameContaining(bookName)
+                .map(book -> new ResponseEntity<>(book, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @ApiOperation("Search a book with the author's name or surname")
+    @GetMapping("/author/{nameOrsurname}")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Not found")
+    })
+    public ResponseEntity<List<Book>> findByAuthorOrSurname(@ApiParam(value = "Author's name/surname (String)", required = true, example = "William Dean or Howells")
+                                                            @PathVariable("nameOrsurname") String author, String surname) {
+        return bookService.findByAuthorOrSurname(author, surname).map(
                 books -> new ResponseEntity<>(books, HttpStatus.OK)
 
         ).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -56,13 +69,13 @@ public class BookController {
     @PostMapping("/save")
     public ResponseEntity<Book> save(@ApiParam(value = "The book entity", required = true, example = "" +
             "{\n" +
-            "  \"name\": 0,\n" +
-            "  \"pageCount\": {\n" +
-            "    \"point\": 0,\n" +
-            "    \"authorId\": \"string\",\n" +
-            "    \"typeId\": 0\n" +
+            "  \"name\": INTRODUCE HERE,\n" +
+            "  \"pageCount\": INTRODUCE HERE {\n" +
+            "    \"point\": INTRODUCE HERE,\n" +
+            "    \"authorId\": INTRODUCE HERE\"string\",\n" +
+            "    \"typeId\": INTRODUCE HERE\n" +
             "  }" +
-            "") @RequestBody Book book){
+            "") @RequestBody Book book) {
         return new ResponseEntity<>(bookService.save(book), HttpStatus.CREATED);
     }
 
@@ -72,10 +85,10 @@ public class BookController {
             @ApiResponse(code = 404, message = "Not found")
     })
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@ApiParam(value = "The book's ID")@PathVariable("id") int bookId){
-        if(bookService.delete(bookId)) {
+    public ResponseEntity delete(@ApiParam(value = "The book's ID") @PathVariable("id") int bookId) {
+        if (bookService.delete(bookId)) {
             return new ResponseEntity(HttpStatus.OK);
-        } else  {
+        } else {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }

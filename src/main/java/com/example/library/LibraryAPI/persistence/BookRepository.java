@@ -28,19 +28,20 @@ public class BookRepository implements com.example.library.LibraryAPI.domain.rep
 
     @Override
     public Book save(Book book) {
-        return  bookCrudRepository.save(book);
+        return bookCrudRepository.save(book);
     }
 
+
     @Override
-    public Optional<List<Book>> findBookByAuthorName(String name) {
-        List<Book> books = bookCrudRepository.findBookByAuthorName(name);
+    public Optional<List<Book>> findByNameContaining(String name) {
+        List<Book> books = bookCrudRepository.findByNameContaining(name);
         return Optional.of(books);
     }
 
 
     @Override
-    public Optional<List<Book>> findBookByAuthorSurname(String surname) {
-        List<Book> books = bookCrudRepository.findBookByAuthorSurname(surname);
+    public Optional<List<Book>> findByAuthorOrSurname(String author, String surname) {
+        List<Book> books = bookCrudRepository.findByAuthorOrSurname(author, surname);
         return Optional.of(books);
     }
 
@@ -48,4 +49,6 @@ public class BookRepository implements com.example.library.LibraryAPI.domain.rep
     public void delete(int bookId) {
         bookCrudRepository.deleteById(bookId);
     }
+
+
 }

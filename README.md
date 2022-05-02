@@ -1,6 +1,6 @@
 # Spring Library
 
-Library REST API developed with Java Spring boot and JWT. 
+Library REST API developed with Java Spring boot and JPA. 
 
 
 
@@ -37,6 +37,17 @@ Library REST API developed with Java Spring boot and JWT.
 | :-------- | :------- | :-------------------------------- |
 | `No Parameter`      |  | **Required**. Search all books |
 
+#### Get books by name/part name
+
+```http
+  GET /books/name/nameOrPartName
+```
+
+| Parameter           | Type     | Description                                                                     |
+|:--------------------| :------- |:--------------------------------------------------------------------------------|
+| `Name or part name` | `String` | **Required**. Search a book list (or book) using a complete name or part of it. |
+
+
 #### Get books by author
 
 ```http
@@ -45,7 +56,7 @@ Library REST API developed with Java Spring boot and JWT.
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `Name or surname`      | `String` | **Required**. Search a book with the author's name or surname (not working right now) |
+| `Name or surname`      | `String` | **Required**. Search a book with the author's name or surname |
 
 ### Delete a book
 ```http
