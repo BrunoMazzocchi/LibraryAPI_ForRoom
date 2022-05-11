@@ -28,3 +28,12 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+jar {
+	manifest.attributes(
+			'Class-Path': configurations.runtimeClasspath.files.collect{ it.getName( )}.join(' ') )
+
+	archiveClassifier=''
+	enabled = false
+
+}
