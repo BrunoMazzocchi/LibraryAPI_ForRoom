@@ -13,6 +13,8 @@ import java.util.*;
 public class BookRepository implements com.example.library.LibraryAPI.domain.repository.BookRepository {
     @Autowired
     private BookCrudRepository bookCrudRepository;
+    @Autowired
+    private BorrowCrudRepository borrowCrudRepository;
 
 
     @Override
@@ -48,6 +50,7 @@ public class BookRepository implements com.example.library.LibraryAPI.domain.rep
     @Override
     public void delete(int bookId) {
         bookCrudRepository.deleteById(bookId);
+
     }
 
 

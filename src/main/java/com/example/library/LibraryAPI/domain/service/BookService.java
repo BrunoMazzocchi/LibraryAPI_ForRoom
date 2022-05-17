@@ -12,6 +12,8 @@ public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
+    @Autowired
+    private BorrowRepository borrowRepository;
 
     public List<Book> getAll() {
         return bookRepository.getAll();
@@ -27,7 +29,9 @@ public class BookService {
 
     public boolean delete(int bookId) {
         return getBook(bookId).map(book -> {
+            borrowRepository.deleteBorrowByBookId(bookId);
             bookRepository.delete(bookId);
+
             return true;
         }).orElse(false);
     }

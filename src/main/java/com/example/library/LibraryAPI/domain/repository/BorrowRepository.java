@@ -11,4 +11,5 @@ public interface BorrowRepository {
     Optional<List<Borrow>> getBorrowByStudentId(int studentId);
     Optional<List<Borrow>>  getBorrowByBookId(int bookId);
     Borrow save (Borrow borrow);
+    void deleteBorrowByBookId(int bookId);
 }

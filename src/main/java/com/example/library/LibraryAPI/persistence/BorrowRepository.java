@@ -37,4 +37,11 @@ public class BorrowRepository implements  com.example.library.LibraryAPI.domain.
     public Borrow save(Borrow borrow) {
         return borrowCrudRepository.save(borrow);
     }
+
+    @Override
+    public void deleteBorrowByBookId(int bookId) {
+        borrowCrudRepository.deleteBorrowByBookId(bookId);
+    }
+
+
 }
