@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.*;
 
 @Entity
-@Table(name = "borrows")
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -12,9 +12,9 @@ public class Student {
     private Integer studentId;
     private String name;
     private String surname;
-    private Date birthDate;
+    private Date dateOfBirth;
     private String gender;
-    private String clasS;
+    private String classroom;
     private Integer point;
 
     public Integer getStudentId() {
@@ -41,12 +41,12 @@ public class Student {
         this.surname = surname;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getGender() {
@@ -57,12 +57,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public String getClasS() {
-        return clasS;
+    public String getClassroom() {
+        return classroom;
     }
 
-    public void setClasS(String clasS) {
-        this.clasS = clasS;
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
     }
 
     public Integer getPoint() {
@@ -72,5 +72,4 @@ public class Student {
     public void setPoint(Integer point) {
         this.point = point;
     }
-
 }

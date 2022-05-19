@@ -16,6 +16,29 @@ public class Borrow {
     private Date takenDate;
     private Date broughtDate;
 
+    @ManyToOne
+    @JoinColumn(name = "bookId", insertable = false, updatable = false) //Mediante esto, no se actualizan ni
+    private Book book;
+
+    @ManyToOne
+    @JoinColumn(name = "studentId", insertable = false, updatable = false) //Mediante esto, no se actualizan ni
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
 
     public Integer getBorrowId() {
         return borrowId;

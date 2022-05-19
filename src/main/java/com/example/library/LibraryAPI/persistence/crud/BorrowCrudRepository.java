@@ -18,4 +18,6 @@ public interface BorrowCrudRepository extends CrudRepository<Borrow, Integer> {
     @Transactional
     void deleteBorrowByBookId(int bookId);
 
+    @Query(value = "Select * from borrows", nativeQuery = true)
+    List<Borrow> getAll();
 }
