@@ -37,3 +37,6 @@ jar {
 	enabled = false
 
 }
+
+task stage(dependsOn: 'bootJar') {
+}
