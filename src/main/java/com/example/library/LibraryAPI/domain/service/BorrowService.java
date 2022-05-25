@@ -27,6 +27,16 @@ public class BorrowService {
         return borrowRepository.save(borrow);
     }
 
+    public Optional<Borrow> getBorrow(int borrowId) {
+        return borrowRepository.getBorrow(borrowId);
+    }
+    public boolean delete(int borrowId) {
+        return getBorrow(borrowId).map(borrow -> {
+            borrowRepository.delete(borrowId);
+
+            return true;
+        }).orElse(false);
+    }
 }
 
 

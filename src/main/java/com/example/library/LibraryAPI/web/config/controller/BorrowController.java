@@ -66,6 +66,20 @@ public class BorrowController {
             "")@RequestBody Borrow borrow){
         return new ResponseEntity<>(borrowService.save(borrow), HttpStatus.CREATED);
     }
+
+    @ApiOperation("Deletes a borrow with the information required")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Not found")
+    })
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete(@ApiParam(value = "The borrow's ID") @PathVariable("id") int borrowId) {
+        if (borrowService.delete(borrowId)) {
+            return new ResponseEntity(HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
 }
 
 

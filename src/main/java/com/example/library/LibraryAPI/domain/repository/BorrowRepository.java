@@ -12,4 +12,7 @@ public interface BorrowRepository {
     Optional<List<Borrow>>  getBorrowByBookId(int bookId);
     Borrow save (Borrow borrow);
     void deleteBorrowByBookId(int bookId);
+    void delete(int borrowId);
+    Optional<Borrow> getBorrow(int borrowId);
+
 }
