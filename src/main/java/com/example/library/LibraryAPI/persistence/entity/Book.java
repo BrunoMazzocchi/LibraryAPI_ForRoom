@@ -17,15 +17,7 @@ public class Book {
     private Integer point;
     private Integer authorId;
     private Integer typeId;
-    private String bookCover;
 
-    public String getBookCover() {
-        return bookCover;
-    }
-
-    public void setBookCover(String bookCover) {
-        this.bookCover = bookCover;
-    }
 
     @ManyToOne
     @JoinColumn(name = "authorId", insertable = false, updatable = false) //Mediante esto, no se actualizan ni
