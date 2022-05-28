@@ -1,5 +1,7 @@
 # Spring Library
 
+Currently deployed here: https://springbootlibrary2022.herokuapp.com/swagger-ui.html
+
 Library REST API developed with Java Spring boot and JPA. 
 
 
@@ -8,16 +10,7 @@ Library REST API developed with Java Spring boot and JPA.
 ![Java](https://img.shields.io/static/v1?style=for-the-badge&message=Java&color=007396&logo=Java&logoColor=FFFFFF&label=) ![Spring](https://img.shields.io/static/v1?style=for-the-badge&message=Spring&color=6DB33F&logo=Spring&logoColor=FFFFFF&label=) ![Spring Boot](https://img.shields.io/static/v1?style=for-the-badge&message=Spring+Boot&color=6DB33F&logo=Spring+Boot&logoColor=FFFFFF&label=) ![Spring Security](https://img.shields.io/static/v1?style=for-the-badge&message=Spring+Security&color=6DB33F&logo=Spring+Security&logoColor=FFFFFF&label=) ![JSON](https://img.shields.io/static/v1?style=for-the-badge&message=JSON&color=000000&logo=JSON&logoColor=FFFFFF&label=)
 
 ## API Reference
-
-#### Get a book
-
-```http
-  GET /books/${id}
-```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `Id` | `int` | **Required**. Search a specific book with an Id.
+Common
 
 #### Get all books
 
@@ -28,47 +21,6 @@ Library REST API developed with Java Spring boot and JPA.
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `No Parameter`      |  | **Required**. Search all books |
-
-#### Get books by name/part name
-
-```http
-  GET /books/name/nameOrPartName
-```
-
-| Parameter           | Type     | Description                                                                     |
-|:--------------------| :------- |:--------------------------------------------------------------------------------|
-| `Name or part name` | `String` | **Required**. Search a book list (or book) using a complete name or part of it. |
-
-
-#### Get books by author
-
-```http
-  GET /books/author/nameOrSurname
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Name or surname`      | `String` | **Required**. Search a book with the author's name or surname |
-
-### Delete a book
-```http
-  Delete /books/delete
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Id`      | `int` | **Required**. Deletes a book with the specified Id. |
-
-
-### Save a book
-```http
-  Post /books/save
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Book`      | `book` | **Required**. Saves a book with the information required. |
-
 
 
 #### Get all borrows
@@ -81,32 +33,6 @@ Library REST API developed with Java Spring boot and JPA.
 | :-------- | :------- | :------------------------- |
 | `No parameter` |  | **Required**.  Gets all the borrows registered.
 
-### Gets a specific borrow
-```http
-  Get /borrows/book/{bookId}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Id`      | `int` | **Required**. Search a specifics borrow with a book ID |
-
-### Gets a specific borrow
-```http
-  Get /borrows/student/{studentId}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Id`      | `int` | **Required**. Search a specifics borrow with a student ID |
-
-### Saves a borrow
-```http
-  Post /borrows/save
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `Borrow`      | `borrow` | **Required**. Saves a borrow with the information required.|
 
 ## Authors
 
